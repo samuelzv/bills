@@ -8,7 +8,7 @@ from sqlmodel import Field, SQLModel
 class BillBase(SQLModel):
     name: str
     deadline: date
-    amount: Decimal
+    amount: Decimal = Field(max_digits=10, decimal_places=2)
     done: bool = False
 
 
@@ -23,7 +23,7 @@ class BillCreate(BillBase):
 class BillUpdate(SQLModel):
     name: Optional[str] = None
     deadline: Optional[date] = None
-    amount: Optional[Decimal] = None
+    amount: Optional[Decimal] = Field(default=None, max_digits=10, decimal_places=2)
     done: Optional[bool] = None
 
 
