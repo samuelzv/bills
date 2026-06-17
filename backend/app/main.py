@@ -1,12 +1,16 @@
 from contextlib import asynccontextmanager
 from collections.abc import AsyncGenerator
+from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.templating import Jinja2Templates
 from sqlmodel import SQLModel
 
 import app.models  # noqa: F401 - registers models with SQLModel metadata
 from app.api.routers import bills
 from app.db.session import engine
+
+templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
 
 
 @asynccontextmanager
@@ -24,3 +28,8 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 app = FastAPI(lifespan=lifespan)
 
 app.include_router(bills.router, prefix="/api/v1")
+
+
+@app.get("/")
+async def index(request: Request):
+    return templates.TemplateResponse(request, "bills.jinja-html", {"name": "World"})
