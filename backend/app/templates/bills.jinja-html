@@ -82,11 +82,41 @@
                             <!-- Title -->
                             <h2 x-dialog:title x-text="selectedEvent?.title" class="font-medium text-gray-800"></h2>
 
+                            <!-- Form -->
+
+<div class="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+  <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-2">Get in Touch</h2>
+    <p class="text-sm text-gray-600 mb-6">Fill out the form below.</p>
+
+    <form class="space-y-4">
+      <!-- Input fields with focus rings, rounded corners, and padding -->
+      <input type="text" :value="selectedEvent?.title" placeholder="Name" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition" />
+      <input type="text" placeholder="Dealine" :value="selectedEvent?.start" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition" />
+      <input type="text" placeholder="Amount" :value="selectedEvent?.amount" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition" />
+      <textarea placeholder="Your Message" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition resize-none"></textarea>
+      
+      <!-- Submit Button -->
+      <button type="submit" class="w-full bg-blue-600 text-white font-medium py-2.5 rounded-lg hover:bg-blue-700 transition">
+        Send Message
+      </button>
+    </form>
+  </div>
+</div>
+
+
+                            <!-- End Form -->
+
+
+
+
+
                             <div class="space-y-3">
                                 <div class="rounded-md bg-gray-200/70 h-5 w-[300px]"></div>
                                 <div class="rounded-md bg-gray-200/70 h-5 w-[250px]"></div>
                                 <div class="rounded-md bg-gray-200/70 h-5 w-[200px]"></div>
                             </div>
+
                         </div>
                     </div>
                 </div>
