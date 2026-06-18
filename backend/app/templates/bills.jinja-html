@@ -16,6 +16,7 @@
     document.addEventListener('alpine:init', () => {
         Alpine.data('calendarApp', () => ({
             open: false,
+            selectedEvent: null,
             calendar: null,
             events: bills.map((item) => {
                 return {
@@ -41,12 +42,8 @@
                         this.newEventEnd = info.endStr
                     },
                     eventClick: (info) => {
-                        debugger;
+                        this.selectedEvent = info.event;
                         this.open = true;
-                        console.log(this.open);
-                        console.log('sdf');
-
-
                         /*
                         if (confirm('Are you sure you want to remove this event?')) {
                             const index = this.getEventIndex(info)
@@ -128,7 +125,7 @@
     <!-- Flyout -->
     <div class="flex justify-center">
         <!-- Trigger -->
-        <span x-on:click="open = true">
+        <span >
             <button type="button"
                 class="relative flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-gray-200 bg-white px-4 py-2 text-gray-800 shadow-sm hover:border-gray-200 hover:bg-gray-50">
                 Open flyout
@@ -164,7 +161,7 @@
                         <!-- Body -->
                         <div class="space-y-6">
                             <!-- Title -->
-                            <h2 x-dialog:title class="font-medium text-gray-800">Edit post</h2>
+                            <h2 x-dialog:title x-text="selectedEvent?.title" class="font-medium text-gray-800"></h2>
 
                             <div class="space-y-3">
                                 <div class="rounded-md bg-gray-200/70 h-5 w-[300px]"></div>
