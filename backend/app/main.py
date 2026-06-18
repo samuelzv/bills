@@ -3,11 +3,13 @@ from collections.abc import AsyncGenerator
 from pathlib import Path
 
 from fastapi import Depends, FastAPI, Request
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from sqlmodel import SQLModel, Session, select
 
-import app.models  # noqa: F401 - registers models with SQLModel metadata
+# import app.models  # noqa: F401 - registers models with SQLModel metadata
 from app.api.routers import bills
+# from app.api.routers import bills
 from app.db.session import engine, get_db
 from app.models.bill import Bill
 
@@ -28,6 +30,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 
 app = FastAPI(lifespan=lifespan)
 
+app.mount("/static", StaticFiles(directory=Path(__file__).parent / "static"), name="static")
 app.include_router(bills.router, prefix="/api/v1")
 
 

@@ -8,3 +8,6 @@ start-dev:
 
 docker-build-backed:
 	docker compose up backend --build -d
+
+build-front-end:
+	cd frontend && npm run dev 
