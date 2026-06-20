@@ -1,4 +1,4 @@
-{% extends "index.jinja-html" %}
+{% extends "index.jinja" %}
 
 {% block title %}Bills{% endblock %}
 
@@ -13,7 +13,6 @@
 {% block body %}
 <div x-data="calendarApp">
     <div x-ref="calendar"></div>
-
     <h2 class="mt-8 font-bold">List of events</h2>
     <ul class="mt-1 list-inside list-disc text-sm text-gray-500">
         <template x-for="event in events" :key="event.id">
