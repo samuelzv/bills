@@ -37,4 +37,5 @@ app.include_router(bills.router, prefix="/api/v1")
 @app.get("/")
 async def index(request: Request, db: Session = Depends(get_db)):
     bills = [b.model_dump(mode="json") for b in db.exec(select(Bill)).all()]
+
     return templates.TemplateResponse(request, "bills.html", {"bills": bills})
