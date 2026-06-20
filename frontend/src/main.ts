@@ -1,3 +1,4 @@
+import './styles/app.css'
 import Alpine from 'alpinejs'
 import focus from '@alpinejs/focus'
 import ui from '@alpinejs/ui'

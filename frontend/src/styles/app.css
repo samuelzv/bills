@@ -1,2 +1,2 @@
 @import 'tailwindcss';
-@source "../../../backend/app/templates"
+@source "../../../backend/app/templates/*.html"
