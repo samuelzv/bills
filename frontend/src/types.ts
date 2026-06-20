@@ -1,7 +1,8 @@
 export interface Bill {
   id: number
   name: string
-  deadline: string
+  deadline: string,
+  amount: number,
 }
 
 export interface CalendarEvent {
@@ -9,6 +10,7 @@ export interface CalendarEvent {
   title: string
   start: string
   end: string | null
+  amount: number | null
 }
 
 // FullCalendar is loaded from CDN — declare only what we use

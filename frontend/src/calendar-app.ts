@@ -38,11 +38,12 @@ export function calendarApp() {
         title: item.name,
         start: item.deadline,
         end: item.deadline,
-      }))
+        amount: item.amount,
+      }));
+      debugger;
 
       this.calendar = new FullCalendar.Calendar(this.$refs['calendar'] as HTMLElement, {
-        events: (_info: unknown, success: (events: CalendarEvent[]) => void) =>
-          success(this.events),
+        events: (_info: unknown, success: (events: CalendarEvent[]) => void) => success(this.events),
         initialDate: '2026-06-01',
         initialView: 'dayGridMonth',
         selectable: true,
@@ -53,6 +54,7 @@ export function calendarApp() {
           this.newEventEnd = info.endStr
         },
         eventClick: (info: FullCalendarEventInfo) => {
+          debugger;
           this.selectedEvent = info.event
           this.open = true
         },
