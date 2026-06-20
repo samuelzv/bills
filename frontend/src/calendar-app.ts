@@ -25,6 +25,7 @@ function loadBills(): Bill[] {
 export function calendarApp() {
   return {
     open: false as boolean,
+    dirty: false as boolean,
     selectedEvent: null as FullCalendarEventInfo['event'] | null,
     calendar: null as FullCalendarInstance | null,
     events: [] as CalendarEvent[],
@@ -40,7 +41,6 @@ export function calendarApp() {
         end: item.deadline,
         amount: item.amount,
       }));
-      debugger;
 
       this.calendar = new FullCalendar.Calendar(this.$refs['calendar'] as HTMLElement, {
         events: (_info: unknown, success: (events: CalendarEvent[]) => void) => success(this.events),
@@ -54,8 +54,8 @@ export function calendarApp() {
           this.newEventEnd = info.endStr
         },
         eventClick: (info: FullCalendarEventInfo) => {
-          debugger;
           this.selectedEvent = info.event
+          this.dirty = false;
           this.open = true
         },
         eventChange: (info: FullCalendarEventInfo) => {
