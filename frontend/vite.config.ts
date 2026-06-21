@@ -36,6 +36,10 @@ export default defineConfig({
           src: 'node_modules/htmx.org/dist/ext/alpine-morph.js',
           dest: 'js/ext',
         },
+        {
+          src: 'src/styles/bills.css',
+          dest: 'css',
+        }
       ],
     }),
   ],

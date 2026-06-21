@@ -3,6 +3,8 @@
 {% block title %}Bills{% endblock %}
 
 {% block head %}
+
+<link href="{{url_for('static',path='/css/bills.css')}}" rel="stylesheet" />
 <!-- calendar stuff -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
@@ -12,48 +14,10 @@
 {% endblock head %}
 
 {% block body %}
-<div x-data="calendarApp">
-    <div class=""></div>
-    <div x-ref="calendar"></div>
-    <h2 class="mt-8 font-bold">List of events</h2>
-    <ul class="mt-1 list-inside list-disc text-sm text-gray-500">
-        <template x-for="event in events" :key="event.id">
-            <li x-text="`${event.title}: ${event.start} ${(event.end ? ' through ' + event.end : '')}`"></li>
-        </template>
-    </ul>
-
-    <form x-on:submit.prevent="addEvent" class="mt-8 max-w-md">
-        <h2 class="font-bold">Adding a new event</h2>
-        <p class="mt-1 text-sm text-gray-500">Select a date or date range on the calendar and enter a title to create a
-            new event.</p>
-        <div class="mt-4 flex items-center gap-2">
-            <label for="new-event-title" class="sr-only">Event Title</label>
-            <input id="new-event-title" type="text" x-model="newEventTitle"
-                class="mt-1 w-full rounded-md border border-gray-200 px-3 py-2.5" placeholder="Event title">
-            <button type="submit" class="shrink-0 rounded-md bg-white px-5 py-2.5 shadow">Submit</button>
-        </div>
-    </form>
-
-    <h2 class="mt-8 font-bold">Moving events and changing duration</h2>
-    <p class="mt-1 text-sm text-gray-500">Drag an event to move it to a different day. Drag the right edge to change the
-        duration.</p>
-
-    <h2 class="mt-8 font-bold">Deleting an event</h2>
-    <p class="mt-1 text-sm text-gray-500">Click an event and confirm to remove it.</p>
-
-
+<div x-data="calendarApp" class="calendar-container">
+    <div x-ref="calendar" class="calendar"></div>
     <!-- Flyout -->
-    <div class="flex justify-center">
-        <!-- Trigger -->
-        <span class="">
-            <button type="button"
-                class="relative flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-gray-200 bg-white px-4 py-2 text-gray-800 shadow-sm hover:border-gray-200 hover:bg-gray-50">
-                Open flyout
-            </button>
-        </span>
-
-        <!-- Flyout -->
-        <div x-dialog x-model="open" x-cloak class="fixed inset-0 overflow-hidden z-10">
+    <div x-dialog x-model="open" x-cloak class="fixed inset-0 overflow-hidden z-10">
             <!-- Overlay -->
             <div x-dialog:overlay x-transition.opacity class="fixed inset-0 bg-black/25"></div>
 
@@ -146,9 +110,7 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
-    <!-- end Flyout -->
 </div>
 
 

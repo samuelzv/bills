@@ -1,0 +1,7 @@
+html, body {
+    height: 100%;
+}
+
+.calendar-container, .calendar {
+    height: 100%;
+}
