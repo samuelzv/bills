@@ -58,6 +58,12 @@ export function calendarApp() {
           this.dirty = false;
           this.open = true
         },
+        eventClassNames: (info: FullCalendarEventInfo) => {
+          const today = new Date()
+          today.setHours(0, 0, 0, 0)
+          const start = new Date(info.event.startStr)
+          return start < today ? ['event--overdue'] : ['event--upcoming']
+        },
         eventChange: (info: FullCalendarEventInfo) => {
           const index = this.getEventIndex(info)
           this.events[index].start = info.event.startStr

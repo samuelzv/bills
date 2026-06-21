@@ -5,3 +5,11 @@ html, body {
 .calendar-container, .calendar {
     height: 100%;
 }
+
+.event--overdue .fc-event-main {
+  background-color: #ef4444; /* red */
+}
+
+.event--upcoming .fc-event-main {
+  background-color: #22c55e; /* green */
+}
