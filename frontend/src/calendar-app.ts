@@ -83,6 +83,7 @@ export function calendarApp() {
         title: this.newEventTitle,
         start: this.newEventStart,
         end: this.newEventEnd,
+        amount: 0, 
       })
 
       this.calendar?.refetchEvents()

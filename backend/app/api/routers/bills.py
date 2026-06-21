@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 
-from app.api.deps import get_db
+from app.api.deps import get_db, jinjax
 from app.models.bill import Bill, BillCreate, BillPublic, BillUpdate
 
 router = APIRouter(prefix="/bills", tags=["bills"])
@@ -30,6 +30,7 @@ def create_bill(bill_in: BillCreate, db: Session = Depends(get_db)) -> Bill:
 
 
 @router.put("/{bill_id}", response_model=BillPublic)
+@jinjax.page("bill.html")
 def update_bill(
     bill_id: int, bill_in: BillUpdate, db: Session = Depends(get_db)
 ) -> Bill:

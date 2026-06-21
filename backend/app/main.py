@@ -4,16 +4,12 @@ from pathlib import Path
 
 from fastapi import Depends, FastAPI, Request
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 from sqlmodel import SQLModel, Session, select
 
-# import app.models  # noqa: F401 - registers models with SQLModel metadata
+from app.api.deps import templates
 from app.api.routers import bills
-# from app.api.routers import bills
 from app.db.session import engine, get_db
 from app.models.bill import Bill
-
-templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
 
 
 @asynccontextmanager
