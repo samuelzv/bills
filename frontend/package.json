@@ -10,7 +10,8 @@
   "dependencies": {
     "@alpinejs/focus": "^3.15.12",
     "@alpinejs/ui": "^3.15.12",
-    "alpinejs": "^3.15.12"
+    "alpinejs": "^3.15.12",
+    "htmx.org": "^2.0.3"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.1",
@@ -18,6 +19,7 @@
     "@types/node": "^26.0.0",
     "tailwindcss": "^4.3.1",
     "typescript": "^5.4.0",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vite-plugin-static-copy": "^1.0.6"
   }
 }
